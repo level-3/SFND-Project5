@@ -4,6 +4,9 @@
 #include "Eigen/Dense"
 #include "measurement_package.h"
 
+using Eigen::MatrixXd;
+using Eigen::VectorXd;
+
 class UKF {
  public:
   /**
@@ -41,6 +44,7 @@ class UKF {
    */
   void UpdateRadar(MeasurementPackage meas_package);
 
+  void UKFUpdate(MeasurementPackage meas_package, int n_z ,MatrixXd Zsig);
 
   // initially set to false, set to true in first call of ProcessMeasurement
   bool is_initialized_;
@@ -95,6 +99,15 @@ class UKF {
 
   // Sigma point spreading parameter
   double lambda_;
+
+
+  MatrixXd R_lidar_;
+  MatrixXd R_radar_;
+
+  double NIS_lidar_;
+  double NIS_radar_;
+
+
 };
 
 #endif  // UKF_H
