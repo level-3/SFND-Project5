@@ -118,8 +118,6 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package)
       * Remember: you'll need to convert radar from polar to cartesian coordinates.
     */
 
-    // first measurement
-    std::cout << "UKF: " << endl;
 
     x_ << 0, 0, 0, 0, 0;
 
